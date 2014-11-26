@@ -25,7 +25,6 @@ import com.philips.lighting.hue.sdk.PHSDKListener;
 import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHHueError;
 import com.philips.lighting.model.PHHueParsingError;
-import com.philips.lighting.quickstart.R;
 
 /**
  * PHHomeActivity - The starting point in your own Hue App.

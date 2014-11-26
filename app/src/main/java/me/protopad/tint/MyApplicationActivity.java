@@ -20,15 +20,7 @@ import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHBridgeResource;
 import com.philips.lighting.model.PHHueError;
 import com.philips.lighting.model.PHLight;
-import com.philips.lighting.quickstart.R;
 
-/**
- * MyApplicationActivity - The starting point for creating your own Hue App.  
- * Currently contains a simple view with a button to change your lights to random colours.  Remove this and add your own app implementation here! Have fun!
- * 
- * @author SteveyO
- *
- */
 public class MyApplicationActivity extends ActionBarActivity implements
         MessageApi.MessageListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
 

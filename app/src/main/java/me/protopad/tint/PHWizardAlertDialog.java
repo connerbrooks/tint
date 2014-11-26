@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.WindowManager;
 
-import com.philips.lighting.quickstart.R;
 
 /**
  * Generic class for Alert and Progress dialogs wizard
