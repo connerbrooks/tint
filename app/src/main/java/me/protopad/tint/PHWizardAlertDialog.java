@@ -1,4 +1,4 @@
-package me.protopad.prometheus;
+package me.protopad.tint;
 
 import android.app.Activity;
 import android.app.AlertDialog;

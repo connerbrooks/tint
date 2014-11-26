@@ -1,14 +1,11 @@
-package me.protopad.prometheus;
+package me.protopad.tint;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -66,37 +63,16 @@ public class PHHomeActivity extends ActionBarActivity implements OnItemClickList
         phHueSDK = PHHueSDK.create();
         
         // Set the Device Name (name of your app). This will be stored in your bridge whitelist entry.
-        phHueSDK.setAppName("Prometheus");
+        phHueSDK.setAppName("Tint");
         phHueSDK.setDeviceName(android.os.Build.MODEL);
         
         // Register the PHSDKListener to receive callbacks from the bridge.
         phHueSDK.getNotificationManager().registerSDKListener(listener);
-        
+
         adapter = new AccessPointListAdapter(getApplicationContext(), phHueSDK.getAccessPointsFound());
-        
-        final RecyclerView accessPointList = (RecyclerView) findViewById(R.id.bridge_list);
-        accessPointList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = accessPointList.getChildPosition(v);
 
-                HueSharedPreferences prefs = HueSharedPreferences.getInstance(getApplicationContext());
-                PHAccessPoint accessPoint = (PHAccessPoint) adapter.getItem(position);
-                accessPoint.setUsername(prefs.getUsername());
-
-                PHBridge connectedBridge = phHueSDK.getSelectedBridge();
-
-                if (connectedBridge != null) {
-                    String connectedIP = connectedBridge.getResourceCache().getBridgeConfiguration().getIpAddress();
-                    if (connectedIP != null) {   // We are already connected here:-
-                        phHueSDK.disableHeartbeat(connectedBridge);
-                        phHueSDK.disconnect(connectedBridge);
-                    }
-                }
-                PHWizardAlertDialog.getInstance().showProgressDialog(R.string.connecting, PHHomeActivity.this);
-                phHueSDK.connect(accessPoint);
-            }
-        });
+        ListView accessPointList = (ListView) findViewById(R.id.bridge_list);
+        accessPointList.setOnItemClickListener(this);
         accessPointList.setAdapter(adapter);
         
         // Try to automatically connect to the last known bridge.  For first time use this will be empty so a bridge search is automatically started.

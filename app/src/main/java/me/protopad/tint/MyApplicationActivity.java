@@ -1,4 +1,4 @@
-package me.protopad.prometheus;
+package me.protopad.tint;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.MessageEvent;
+import com.google.android.gms.wearable.Wearable;
 import com.philips.lighting.hue.listener.PHLightListener;
 import com.philips.lighting.hue.sdk.PHHueSDK;
 import com.philips.lighting.model.PHBridge;
@@ -24,23 +29,34 @@ import com.philips.lighting.quickstart.R;
  * @author SteveyO
  *
  */
-public class MyApplicationActivity extends ActionBarActivity {
+public class MyApplicationActivity extends ActionBarActivity implements
+        MessageApi.MessageListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
+
+{
     private PHHueSDK phHueSDK;
     private static final int MAX_HUE=65535;
     public static final String TAG = "QuickStart";
     List<PHLight> mLights;
     private Toolbar toolbar;
+    public static final String START_LISTENING_PATH = "/start/listening";
+    GoogleApiClient mGoogleApiClient;
+    boolean mResolvingError = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
 
-        setTitle("Prometheus");
+        setTitle("Tint");
         phHueSDK = PHHueSDK.create();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
 
         getLights();
     }
@@ -53,6 +69,7 @@ public class MyApplicationActivity extends ActionBarActivity {
         CardAdapter cardAdapter = new CardAdapter(this, R.layout.light_card,  mLights, phHueSDK);
         listView.setAdapter(cardAdapter);
     }
+
 
     // If you want to handle the response from the bridge, create a PHLightListener object.
     PHLightListener listener = new PHLightListener() {
@@ -90,6 +107,49 @@ public class MyApplicationActivity extends ActionBarActivity {
             
             phHueSDK.disconnect(bridge);
             super.onDestroy();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!mResolvingError) {
+            mGoogleApiClient.connect();
+        }
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        if (Log.isLoggable(TAG, Log.DEBUG)) {
+            Log.d(TAG, "Connected to Google Api Service");
+        }
+        Wearable.MessageApi.addListener(mGoogleApiClient, this);
+    }
+
+    @Override
+    protected void onStop() {
+        if (null != mGoogleApiClient && mGoogleApiClient.isConnected()) {
+            Wearable.MessageApi.removeListener(mGoogleApiClient, this);
+            mGoogleApiClient.disconnect();
+        }
+        super.onStop();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onMessageReceived(MessageEvent messageEvent) {
+        if (messageEvent.getPath().equals(START_LISTENING_PATH)) {
+            String command = new String(messageEvent.getData());
+            Log.e("WE GOT STUFF", command);
         }
     }
 }

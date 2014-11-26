@@ -4,9 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:theme="@android:style/Theme.Dialog"
     android:id="@+id/linear1"
     android:minWidth="300dp" >
 
@@ -20,7 +17,7 @@
         />
 
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
         android:id="@+id/bridge_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,10 +25,11 @@
         android:cacheColorHint="#00000000" 
     	android:focusable="true"
     	android:choiceMode="singleChoice" 
-    	android:dividerHeight="3sp"  
-    	android:layout_marginLeft="2dip"
-		android:layout_marginRight="2dip"
-		android:layout_marginTop="3dip"/>
+    	android:dividerHeight="0dp"
+        android:divider="@null"
+    	android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"
+		android:layout_marginTop="5dip"/>
 
     <TextView
         android:id="@+id/textView1"

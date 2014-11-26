@@ -1,4 +1,4 @@
-package me.protopad.prometheus;
+package me.protopad.tint;
 
 import java.util.List;
 

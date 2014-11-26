@@ -1,17 +1,11 @@
 <resources>
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    </style>
-
     <!-- Application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#f50057</item>
-        <item name="colorPrimaryDark">#ff80ab</item>
+        <item name="colorPrimary">@color/theme_primary</item>
+        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
         <item name="windowActionBar">false</item>
+        <item name="colorAccent">@color/theme_accent_1</item>
     </style>
 
     <style name="light_name">
@@ -20,19 +14,8 @@
       <item name="android:layout_alignParentBottom">true</item>
       <item name="android:layout_marginLeft">15dp</item>
       <item name="android:paddingBottom">2dp</item>
-      <item name="android:textColor">#c51162</item>
+      <item name="android:textColor">@color/body_text_1</item>
       <item name="android:textSize">26dp</item>
-    </style>
-
-    <style name="light_subtitle">
-      <item name="android:layout_width">fill_parent</item>
-      <item name="android:layout_height">wrap_content</item>
-      <item name="android:layout_gravity">center</item>
-      <item name="android:layout_marginBottom">0dp</item>
-      <item name="android:layout_marginLeft">10dp</item>
-      <item name="android:paddingBottom">5dp</item>
-      <item name="android:textColor">#00b0ff</item>
-      <item name="android:textSize">18dp</item>
     </style>
 
     <style name="MyLocksCardViewPendingEkeys">

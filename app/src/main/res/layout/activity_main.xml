@@ -6,21 +6,23 @@
     android:orientation="vertical"
     tools:context=".PHMyApplicationActivity" >
 
-    <android.support.v7.widget.Toolbar
+    <!--android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/-->
+
+    <include layout="@layout/toolbar_actionbar"/>
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/myListView"
         android:divider="@null"
-        android:padding="6dp"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="8dp"
+        android:layout_margin="8dp"
+        />
 
 </LinearLayout>
