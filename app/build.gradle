@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.0.0"
+    buildToolsVersion "21.0.2"
 
     defaultConfig {
         applicationId "com.philips.lighting.quickstart"
@@ -21,9 +21,9 @@ android {
 dependencies {
     compile files('libs/huelocalsdk.jar')
     compile files('libs/huesdkresources.jar')
-    compile 'com.android.support:cardview-v7:+'
-    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:cardview-v7:21.0.0'
+    compile 'com.android.support:recyclerview-v7:21.0.0'
     compile 'com.android.support:support-v4:21.0.0'
-    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.google.android.gms:play-services-wearable:6.1.11'
 }
