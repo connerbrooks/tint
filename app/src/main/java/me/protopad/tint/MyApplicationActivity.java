@@ -3,6 +3,7 @@ package me.protopad.tint;
 import java.util.List;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -56,11 +57,18 @@ public class MyApplicationActivity extends AppCompatActivity implements
 
     public void getLights() {
         PHBridge bridge = phHueSDK.getSelectedBridge();
-        mLights = bridge.getResourceCache().getAllLights();
+        // if null go back to home activity and reset
+        if (bridge != null) {
+            mLights = bridge.getResourceCache().getAllLights();
 
-        ListView listView = (ListView)  findViewById(R.id.myListView);
-        CardAdapter cardAdapter = new CardAdapter(this, R.layout.light_card,  mLights, phHueSDK);
-        listView.setAdapter(cardAdapter);
+            ListView listView = (ListView) findViewById(R.id.myListView);
+            CardAdapter cardAdapter = new CardAdapter(this, R.layout.light_card, mLights, phHueSDK);
+            listView.setAdapter(cardAdapter);
+        }
+        else {
+            Intent i = new Intent(this, PHHomeActivity.class);
+            startActivity(i);
+        }
     }
 
 
