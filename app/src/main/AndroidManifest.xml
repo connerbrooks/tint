@@ -33,7 +33,7 @@
 	         android:name="me.protopad.tint.PHPushlinkActivity"
 	         android:label="@string/app_name" >
 	    </activity>
-        
+
     </application>
 
 
