@@ -1,20 +1,19 @@
 package me.protopad.tint;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.support.v7.app.AlertDialog;
 import android.view.WindowManager;
 
 
 /**
  * Generic class for Alert and Progress dialogs wizard
- * 
- * 
  */
-
 public final class PHWizardAlertDialog {
 
     private ProgressDialog pdialog;
@@ -38,7 +37,7 @@ public final class PHWizardAlertDialog {
      * @param btnNameResId  String resource id for button name
      */
     public static void showErrorDialog(Context activityContext, String msg, int btnNameResId) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activityContext);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activityContext, R.style.Theme_AlertDialog);
         builder.setTitle(R.string.title_error).setMessage(msg).setPositiveButton(btnNameResId, null);
         AlertDialog alert = builder.create();
         alert.getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);

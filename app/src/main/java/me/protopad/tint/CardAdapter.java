@@ -14,14 +14,11 @@ import com.philips.lighting.hue.sdk.PHHueSDK;
 import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
-import com.philips.lighting.quickstart.R;
+
 
 
 import java.util.List;
 
-/**
- * Created by cbrooks on 10/23/14.
- */
 public class CardAdapter extends ArrayAdapter<PHLight> {
     private final Context context;
     private final List<PHLight> lights;

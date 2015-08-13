@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -39,7 +40,7 @@ import com.philips.lighting.model.PHHueParsingError;
  * 
  *
  */
-public class PHHomeActivity extends ActionBarActivity implements OnItemClickListener {
+public class PHHomeActivity extends AppCompatActivity implements OnItemClickListener {
 
     private PHHueSDK phHueSDK;
     public static final String TAG = "QuickStart";
@@ -134,12 +135,12 @@ public class PHHomeActivity extends ActionBarActivity implements OnItemClickList
         }
 
         @Override
-        public void onBridgeConnected(PHBridge b) {
+        public void onBridgeConnected(PHBridge b, String username) {
             phHueSDK.setSelectedBridge(b);
             phHueSDK.enableHeartbeat(b, PHHueSDK.HB_INTERVAL);
             phHueSDK.getLastHeartbeat().put(b.getResourceCache().getBridgeConfiguration() .getIpAddress(), System.currentTimeMillis());
             prefs.setLastConnectedIPAddress(b.getResourceCache().getBridgeConfiguration().getIpAddress());
-            prefs.setUsername(prefs.getUsername());
+            prefs.setUsername(username);
             PHWizardAlertDialog.getInstance().closeProgressDialog();     
             startMainActivity();
         }
@@ -256,11 +257,9 @@ public class PHHomeActivity extends ActionBarActivity implements OnItemClickList
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        HueSharedPreferences prefs = HueSharedPreferences.getInstance(getApplicationContext());
         PHAccessPoint accessPoint = (PHAccessPoint) adapter.getItem(position);
-        accessPoint.setUsername(prefs.getUsername());
-        
-        PHBridge connectedBridge = phHueSDK.getSelectedBridge();       
+
+        PHBridge connectedBridge = phHueSDK.getSelectedBridge();
 
         if (connectedBridge != null) {
             String connectedIP = connectedBridge.getResourceCache().getBridgeConfiguration().getIpAddress();
@@ -270,7 +269,7 @@ public class PHHomeActivity extends ActionBarActivity implements OnItemClickList
             }
         }
         PHWizardAlertDialog.getInstance().showProgressDialog(R.string.connecting, PHHomeActivity.this);
-        phHueSDK.connect(accessPoint);  
+        phHueSDK.connect(accessPoint);
     }
     
     public void doBridgeSearch() {

@@ -3,9 +3,10 @@ package me.protopad.tint;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.widget.ProgressBar;
 
 import com.philips.lighting.hue.sdk.PHAccessPoint;
@@ -61,7 +62,7 @@ public class PHPushlinkActivity extends Activity {
         public void onAuthenticationRequired(PHAccessPoint arg0) {}
 
         @Override
-        public void onBridgeConnected(PHBridge arg0) {}
+        public void onBridgeConnected(PHBridge arg0, String arg1) {}
 
         @Override
         public void onCacheUpdated(List<Integer> arg0, PHBridge bridge) {}

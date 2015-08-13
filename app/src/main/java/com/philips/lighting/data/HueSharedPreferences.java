@@ -32,11 +32,12 @@ public class HueSharedPreferences {
         mSharedPreferencesEditor = mSharedPreferences.edit();
     }
     
-    
+    /*
     public String getUsername() {
          String username = mSharedPreferences.getString(LAST_CONNECTED_USERNAME, "");
          if (username==null || username.equals("")) {
              username = PHBridgeInternal.generateUniqueKey();
+
              setUsername(username);  // Persist the username in the shared prefs
          }
     	 return username;
@@ -46,6 +47,17 @@ public class HueSharedPreferences {
         mSharedPreferencesEditor.putString(LAST_CONNECTED_USERNAME, username);
         return (mSharedPreferencesEditor.commit());
 	}
+	*/
+
+    public String getUsername() {
+        String username = mSharedPreferences.getString(LAST_CONNECTED_USERNAME, "");
+        return username;
+    }
+
+    public boolean setUsername(String username) {
+        mSharedPreferencesEditor.putString(LAST_CONNECTED_USERNAME, username);
+        return (mSharedPreferencesEditor.commit());
+    }
     
     public String getLastConnectedIPAddress() {
         return mSharedPreferences.getString(LAST_CONNECTED_IP, "");
