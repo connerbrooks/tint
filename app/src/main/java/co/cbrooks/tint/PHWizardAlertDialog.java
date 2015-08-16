@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import android.app.Activity;
 

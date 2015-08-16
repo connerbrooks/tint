@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ProgressBar;
 
 import com.philips.lighting.hue.sdk.PHAccessPoint;
@@ -23,16 +25,21 @@ import com.philips.lighting.model.PHHueParsingError;
  * 
  */
 
-public class PHPushlinkActivity extends Activity {
+public class PHPushlinkActivity extends AppCompatActivity {
     private ProgressBar pbar;
     private static final int MAX_TIME=30;
     private PHHueSDK phHueSDK;
     private boolean isDialogShowing;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pushlink);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(toolbar);
+
         setTitle(R.string.txt_pushlink);
         isDialogShowing=false;
         phHueSDK = PHHueSDK.getInstance();
@@ -116,5 +123,5 @@ public class PHPushlinkActivity extends Activity {
             phHueSDK.getNotificationManager().unregisterSDKListener(listener);
         }
     }
-    
+
 }

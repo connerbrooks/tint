@@ -16,6 +16,19 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="15dp"
+        android:gravity="left"
+        android:paddingLeft="@dimen/keyline_1_minus_8dp"
+        android:paddingRight="20dp"
+        android:singleLine="true"
+        android:text="@string/txt_select_smartbridge"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/body_text_2" />
 
     <ListView
         android:id="@+id/bridge_list"
@@ -25,25 +38,11 @@
         android:cacheColorHint="#00000000" 
     	android:focusable="true"
     	android:choiceMode="singleChoice" 
-    	android:dividerHeight="0dp"
         android:divider="@null"
-    	android:layout_marginLeft="5dp"
-		android:layout_marginRight="5dp"
+        android:dividerHeight="8dp"
 		android:layout_marginTop="5dip"/>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_vertical"
-        android:layout_marginTop="15dp"
-        android:gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:singleLine="true"
-        android:text="@string/txt_select_smartbridge"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000" />
+
 
    
 

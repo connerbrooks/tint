@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import java.util.List;
 
@@ -94,6 +94,12 @@ public class PHHomeActivity extends AppCompatActivity implements OnItemClickList
         else {  // First time use, so perform a bridge search.
             doBridgeSearch();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -268,8 +274,9 @@ public class PHHomeActivity extends AppCompatActivity implements OnItemClickList
                 phHueSDK.disconnect(connectedBridge);
             }
         }
-        PHWizardAlertDialog.getInstance().showProgressDialog(R.string.connecting, PHHomeActivity.this);
+        //PHWizardAlertDialog.getInstance().showProgressDialog(R.string.connecting, PHHomeActivity.this);
         phHueSDK.connect(accessPoint);
+        //PHWizardAlertDialog.getInstance().closeProgressDialog();
     }
     
     public void doBridgeSearch() {

@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import java.util.List;
 import java.util.Map;
@@ -51,6 +51,10 @@ public class MyApplicationActivity extends AppCompatActivity implements
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
+        int x = 0;
+        int y = x * 5;
+
 
         getLights();
     }

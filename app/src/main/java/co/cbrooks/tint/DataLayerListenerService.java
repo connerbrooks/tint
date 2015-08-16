@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import android.net.Uri;
 import android.util.Log;

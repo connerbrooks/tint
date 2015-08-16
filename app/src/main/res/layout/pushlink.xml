@@ -6,6 +6,8 @@
     android:background="#FFFFFFFF"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar_actionbar" />
+
     <TextView
         android:id="@+id/descriptionTextview"
         android:layout_width="fill_parent"

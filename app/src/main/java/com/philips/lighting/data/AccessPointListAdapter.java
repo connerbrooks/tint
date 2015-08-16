@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.philips.lighting.hue.sdk.PHAccessPoint;
 
-import me.protopad.tint.R;
+import co.cbrooks.tint.R;
 
 
 /**

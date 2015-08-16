@@ -1,4 +1,4 @@
-package me.protopad.tint;
+package co.cbrooks.tint;
 
 import android.content.Context;
 import android.view.LayoutInflater;

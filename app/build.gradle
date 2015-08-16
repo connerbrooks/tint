@@ -5,8 +5,8 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.philips.lighting.quickstart"
-        minSdkVersion 22
+        applicationId "co.cbrooks.tint"
+        minSdkVersion 15
         targetSdkVersion 22
     }
 
